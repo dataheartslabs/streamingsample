@@ -1,0 +1,55 @@
+{
+    "template" : "agri",
+    "order" : 10,
+    "mappings" : {
+        "Checkpoint" : {
+            "_source" : {
+                "includes" : ["doc.*"]
+            },
+            "dynamic_templates": [
+                {
+                    "store_no_index": {
+                        "match": "*",
+                        "mapping": {
+                            "store" : "no",
+                            "index" : "no",
+                            "include_in_all" : false
+                        }
+                    }
+                }
+            ]
+        },
+        "testDocument" : {
+          "_source" : {
+            "includes" : ["doc.*"]
+          },
+          "properties" : {
+            "doc" : {
+              "properties" : {
+                "Year" : {
+                  "type" : "date"
+                },
+                "Country" : {
+                  "type" : "date"
+                },
+                "Value" : {
+                  "type" : "long"
+                }
+              }
+            }
+          }
+        },
+        "_default_" : {
+            "_source" : {
+                "includes" : ["*"]
+            },
+            "properties" : {
+                "meta" : {
+                    "type" : "object",
+                    "include_in_all" : false
+                }
+            }
+        }
+    }
+}
+
